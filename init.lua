@@ -608,7 +608,7 @@ require('lazy').setup({
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
-        -- rust_analyzer = {},
+        rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -634,6 +634,34 @@ require('lazy').setup({
         },
       }
 
+      vim.filetype.add {
+        extension = {
+          moos = 'moos',
+          bhv = 'moos',
+          plug = 'moos',
+          def = 'moos',
+        },
+      }
+
+      -- Enable inlay hints
+      vim.lsp.inlay_hint.enable(true)
+      -- Create an event handler for the FileType autocommand
+      vim.api.nvim_create_autocmd('FileType', {
+        -- This handler will fire when the buffer's 'filetype' is "python"
+        pattern = 'moos',
+        callback = function(args)
+          vim.lsp.start {
+            name = 'moos-ivp-language-server',
+            cmd = { 'moos-ivp-language-server' },
+            -- TODO:Waht should be used for a MOOS mission root directory?
+            -- Set the "root directory" to the parent directory of the file in the
+            -- current buffer (`args.buf`) that contains either a "setup.py" or a
+            -- "pyproject.toml" file. Files that share a root directory will reuse
+            -- the connection to the same LSP server.
+            -- root_dir = vim.fs.root(args.buf, {'setup.py', 'pyproject.toml'}),
+          }
+        end,
+      })
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
       --  other tools, you can run

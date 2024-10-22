@@ -1,5 +1,10 @@
 # kickstart.nvim
 
+> ***NOTE:*** This is a fork of the [nvim-lua/kickstart.lua](https://github.com/nvim-lua/kickstart.nvim)
+> repository. This fork is used to maintain a configuration file to be used to
+> enable the [moos-ivp-language-server](https://github.com/cgagner/moos-ivp-language-server).  
+
+
 ## Introduction
 
 A starting point for Neovim that is:
@@ -38,6 +43,9 @@ External Requirements:
 
 ### Install Kickstart
 
+> ***NOTE:*** This section has been updated to point to `cgagner` fork on the
+> `moos-ivp` branch.
+
 > **NOTE**
 > [Backup](#FAQ) your previous configuration (if any exists)
 
@@ -71,7 +79,7 @@ too - it's ignored in the kickstart repo to make maintenance easier, but it's
 <details><summary> Linux and Mac </summary>
 
 ```sh
-git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+git clone -b moos-ivp https://github.com/cgagner/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
 
 </details>
@@ -81,13 +89,13 @@ git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HO
 If you're using `cmd.exe`:
 
 ```
-git clone https://github.com/nvim-lua/kickstart.nvim.git "%localappdata%\nvim"
+git clone -b moos-ivp https://github.com/cgagner/kickstart.nvim.git "%localappdata%\nvim"
 ```
 
 If you're using `powershell.exe`
 
 ```
-git clone https://github.com/nvim-lua/kickstart.nvim.git "${env:LOCALAPPDATA}\nvim"
+git clone -b moos-ivp https://github.com/cgagner/kickstart.nvim.git "${env:LOCALAPPDATA}\nvim"
 ```
 
 </details>
